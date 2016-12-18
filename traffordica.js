@@ -33,18 +33,18 @@ majors = [
 	["b4","d#5","f#5"],
 ];
 minors = [
-	["","",""],
-	["","",""],
+	["c4","eb4","g4"],
+	["c#4","e4","g#4"],
 	["d4","f4","a4"],
-	["","",""],
-	["","",""],
-	["","",""],
-	["","",""],
-	["","",""],
-	["","",""],
+	["eb4","gb4","bb4"],
+	["e4","g4","b4"],
+	["f4","ab4","c5"],
+	["f#4","a4","c#5"],
+	["g4","bb4","d5"],
+	["g#4","b4","d#4"],
 	["a4","c5","e5"],
-	["","",""],
-	["","",""],
+	["bb4","db5","f5"],
+	["b4","d5","f#5"],
 ];
 
 chords = minors.concat(majors);
@@ -56,6 +56,13 @@ return notes[keys.indexOf(key)];
 function key2chord(key){
 return chords[keys.indexOf(key)];
 }
+
+/*TODO: replace this with shortcuts
+a la
+shortcut.add("f5",function() {
+	alert("Hi there!");
+});
+*/
 
 document.onkeydown = function (e) {
 	e = e || window.event;
