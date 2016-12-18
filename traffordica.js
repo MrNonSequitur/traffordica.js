@@ -67,6 +67,7 @@ shortcut.add("f5",function() {
 document.onkeydown = function (e) {
 	e = e || window.event;
 	key = e.key;
+	e.preventDefault();
 	if(key == "Control"){chordMode = !chordMode;}
 	if(key == "Shift"){key = (e.location === KeyboardEvent.DOM_KEY_LOCATION_LEFT? "L" : "R")+"Shift";}
   key = key.toLowerCase();
