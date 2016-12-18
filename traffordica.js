@@ -11,24 +11,62 @@ for(var i = 3; i <= 7; i++){//populate the array of notes
 }
 
 keys = [ //keep in mind that this array is upside down, but still goes left-to-right, as it should
-	"LShift","z","x","c","v","b","n","m",",",".","/","RShift",
-	"CapsLock","a","s","d","f","g","h","j","k","l",";","'",
+	"lshift","z","x","c","v","b","n","m",",",".","/","rshift",
+	"capslock","a","s","d","f","g","h","j","k","l",";","'",
+	"tab","q","w","e","r","t","y","u","i","o","p","[","]",
+	"1","2","3","4","5","6","7","8","9","0","-","+",
+	"f1","f2","f3","f4","f5","f6","f7","f8","f9","f10","f11","f12"
 ];
+
+majors = [
+	["c4","e4","g4"],
+	["db4","f4","ab4"],
+	["d4","f#4","a4"],
+	["eb4","g4","bb4"],
+	["e4","g#4","b4"],
+	["f4","a4","c5"],
+	["f#4","a#4","c#5"],
+	["g4","b4","d5"],
+	["ab4","c5","eb5"],
+	["a4","c#5","e5"],
+	["bb4","d4","f4"],
+	["b4","d#5","f#5"],
+];
+minors = [
+	["","",""],
+	["","",""],
+	["d4","f4","a4"],
+	["","",""],
+	["","",""],
+	["","",""],
+	["","",""],
+	["","",""],
+	["","",""],
+	["a4","c5","e5"],
+	["","",""],
+	["","",""],
+];
+
+chords = minors.concat(majors);
 
 function key2note(key){
 return notes[keys.indexOf(key)];
 }
+
+function key2chord(key){
+return chords[keys.indexOf(key)];
+}
+
 document.onkeydown = function (e) {
 	e = e || window.event;
 	key = e.key;
 	if(key == "Control"){chordMode = !chordMode;}
 	if(key == "Shift"){key = (e.location === KeyboardEvent.DOM_KEY_LOCATION_LEFT? "L" : "R")+"Shift";}
-//need to also work around capslock, possibly by zealous downcasing
-	console.log(key+", "+key2note(key));
+  key = key.toLowerCase();
+	console.log(key+", "+key2note(key)+", "+key2chord(key));
 	if(chordMode){
-		//synth.triggerAttackRelease(key2chord[key], "8n");
+		synth.triggerAttackRelease(key2chord(key), "8n");
 	} else {
-	console.log("playing note");
-		synth.triggerAttackRelease([key2note(key)], "8n");
+		console.log(synth.triggerAttackRelease([key2note(key)], "8n"));
 	}
 };
