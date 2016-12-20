@@ -13,8 +13,8 @@ for(var i = 3; i <= 7; i++){//populate the array of notes
 keys = [ //keep in mind that this array is upside down, but still goes left-to-right, as it should
 	"lshift","z","x","c","v","b","n","m",",",".","/","rshift",
 	"capslock","a","s","d","f","g","h","j","k","l",";","'",
-	"tab","q","w","e","r","t","y","u","i","o","p","[","]",
-	"1","2","3","4","5","6","7","8","9","0","-","+",
+	"q","w","e","r","t","y","u","i","o","p","[","]",
+	"1","2","3","4","5","6","7","8","9","0","-","=",
 	"f1","f2","f3","f4","f5","f6","f7","f8","f9","f10","f11","f12"
 ];
 
@@ -56,13 +56,6 @@ return notes[keys.indexOf(key)];
 function key2chord(key){
 return chords[keys.indexOf(key)];
 }
-
-/*TODO: replace this with shortcuts
-a la
-shortcut.add("f5",function() {
-	alert("Hi there!");
-});
-*/
 
 document.onkeydown = function (e) {
 	e = e || window.event;
